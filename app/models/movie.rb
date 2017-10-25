@@ -1,11 +1,7 @@
 class Movie < ActiveRecord::Base
-  def self.ratings
-    
-    
-    Movie.select(:rating).distinct.inject([]) { |a, m| a.push m.rating}
-    
-    
-    
+ def self.get_all_ratings
+  	
+  	Movie.select("DISTINCT rating").map(&:rating)
   end
   
 end
